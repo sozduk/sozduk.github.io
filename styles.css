@@ -92,8 +92,63 @@ a {
     transition: color var(--transition);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--color-text);
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-sm);
+    margin-right: var(--space-sm);
+}
+
+.menu-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-text);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(250, 250, 250, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md);
+    z-index: 999;
+}
+
+.mobile-nav.open {
+    display: block;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: var(--space-md);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    border-bottom: 1px solid var(--color-border);
+    transition: color var(--transition), background var(--transition);
+}
+
+.mobile-nav a:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+    color: var(--color-text);
+    background: rgba(0,0,0,0.02);
 }
 
 /* Language Switcher */
@@ -535,6 +590,10 @@ a {
     padding: var(--space-xl) var(--space-lg);
 }
 
+.section-first {
+    padding-top: calc(var(--space-xl) + 70px); /* Account for fixed nav */
+}
+
 .section-light {
     background: #fff;
 }
@@ -899,6 +958,10 @@ a {
         display: none;
     }
     
+    .menu-btn {
+        display: block;
+    }
+    
     .hero {
         padding: calc(var(--space-xl) + 60px) var(--space-md) var(--space-lg);
     }
@@ -1012,10 +1075,12 @@ a {
 /* Vowel & Consonant Harmony Page */
 .harmony-section {
     padding: var(--space-xl) var(--space-lg);
+    padding-top: calc(var(--space-xl) + 60px); /* Account for fixed nav */
     background: #fff;
 }
 
 .harmony-section.consonant-section {
+    padding-top: var(--space-xl); /* Not first section */
     background: var(--color-bg);
     border-top: 1px solid var(--color-border);
 }

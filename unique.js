@@ -1,5 +1,24 @@
 // Unique Words Page Application
 
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const mobileNav = document.getElementById('mobileNav');
+    if (mobileNav) {
+        mobileNav.classList.toggle('open');
+    }
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const mobileNav = document.getElementById('mobileNav');
+    const menuBtn = document.querySelector('.menu-btn');
+    if (mobileNav && mobileNav.classList.contains('open')) {
+        if (!mobileNav.contains(e.target) && !menuBtn.contains(e.target)) {
+            mobileNav.classList.remove('open');
+        }
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     applyTranslations();
     updateLangButtons();

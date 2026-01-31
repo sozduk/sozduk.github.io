@@ -12,9 +12,16 @@
 <body>
     <nav class="nav">
         <div class="nav-content">
+            <button class="menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
             <a href="index.html" class="logo">СӨЗДҮК</a>
             <div class="nav-links">
-                <a href="#pairs" data-i18n="nav_pairs">Минималдык жуптар</a>
+                <a href="index.html" class="active" data-i18n="nav_pairs">Минималдык жуптар</a>
                 <a href="harmony.html" data-i18n="nav_harmony">Үндөш сөздөр</a>
                 <a href="unique.html" data-i18n="nav_unique">Уникалдуу сөздөр</a>
             </div>
@@ -25,6 +32,13 @@
             </div>
         </div>
     </nav>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="active" data-i18n="nav_pairs">Минималдык жуптар</a>
+        <a href="harmony.html" data-i18n="nav_harmony">Үндөш сөздөр</a>
+        <a href="unique.html" data-i18n="nav_unique">Уникалдуу сөздөр</a>
+    </div>
 
     <!-- HERO: Research Section (First thing users see) -->
     <header id="pairs" class="hero">
