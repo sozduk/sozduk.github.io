@@ -179,7 +179,7 @@ function showContrast(letter1, letter2) {
 
     // Create key (alphabetically sorted)
     const key = [letter1, letter2].sort().join('-');
-    const contrast = PHONOLOGY_DATA.contrasts[key];
+    const pairs = PHONOLOGY_DATA.contrasts[key];
 
     if (letter1 === letter2) {
         display.innerHTML = `
@@ -190,7 +190,7 @@ function showContrast(letter1, letter2) {
         return;
     }
 
-    if (!contrast) {
+    if (!pairs || pairs.length === 0) {
         display.innerHTML = `
             <div class="contrast-not-found">
                 <p>${t.no_contrast || 'Бул эки тамга үчүн минималдык жуп табылган жок'}</p>
@@ -199,51 +199,55 @@ function showContrast(letter1, letter2) {
         return;
     }
 
-    // Get translations for words
-    const word1Trans = WORD_TRANSLATIONS[contrast.word1];
-    const word2Trans = WORD_TRANSLATIONS[contrast.word2];
-    
-    // Build translation display based on language
-    let trans1Html = '';
-    let trans2Html = '';
-    
-    if (lang === 'en' && word1Trans) {
-        trans1Html = `<span class="word-meaning">${word1Trans.en}</span>`;
-    } else if (lang === 'ru' && word1Trans) {
-        trans1Html = `<span class="word-meaning">${word1Trans.ru}</span>`;
-    }
-    
-    if (lang === 'en' && word2Trans) {
-        trans2Html = `<span class="word-meaning">${word2Trans.en}</span>`;
-    } else if (lang === 'ru' && word2Trans) {
-        trans2Html = `<span class="word-meaning">${word2Trans.ru}</span>`;
-    }
-
-    // Highlight the differing letters
-    const word1Html = highlightDiff(contrast.word1, contrast.position - 1, false);
-    const word2Html = highlightDiff(contrast.word2, contrast.position - 1, true);
+    // Build HTML for all pairs
+    let pairsHtml = '';
+    pairs.forEach((pair, index) => {
+        const delay = Math.min(index * 30, 300);
+        
+        // Highlight differing letter
+        const word1Html = highlightDiff(pair.word1, pair.position - 1, false);
+        const word2Html = highlightDiff(pair.word2, pair.position - 1, true);
+        
+        // Get translation based on language
+        let trans1 = pair.trans1;
+        let trans2 = pair.trans2;
+        
+        // For English, try to use WORD_TRANSLATIONS or show Russian translation
+        if (lang === 'en') {
+            const word1Trans = WORD_TRANSLATIONS[pair.word1];
+            const word2Trans = WORD_TRANSLATIONS[pair.word2];
+            if (word1Trans) trans1 = word1Trans.en;
+            if (word2Trans) trans2 = word2Trans.en;
+        }
+        
+        pairsHtml += `
+            <div class="pair-card" style="animation-delay: ${delay}ms">
+                <div class="pair-words">
+                    <div class="pair-word">
+                        <span class="word-main">${word1Html}</span>
+                        <span class="word-trans">${trans1}</span>
+                    </div>
+                    <span class="pair-arrow">↔</span>
+                    <div class="pair-word second">
+                        <span class="word-main">${word2Html}</span>
+                        <span class="word-trans">${trans2}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
 
     display.innerHTML = `
-        <div class="contrast-result">
+        <div class="contrast-result-full">
             <div class="contrast-header">
                 <div class="contrast-letter">${letter1.toUpperCase()}</div>
                 <span class="contrast-vs">≠</span>
                 <div class="contrast-letter second">${letter2.toUpperCase()}</div>
+                <span class="pairs-count">${pairs.length} ${t.pairs_count || 'жуп'}</span>
             </div>
-            <div class="contrast-proof">
-                <div class="proof-word-wrap">
-                    <span class="proof-word">${word1Html}</span>
-                    ${trans1Html}
-                </div>
-                <span class="proof-separator">⟷</span>
-                <div class="proof-word-wrap">
-                    <span class="proof-word second">${word2Html}</span>
-                    ${trans2Html}
-                </div>
+            <div class="pairs-grid">
+                ${pairsHtml}
             </div>
-            <p class="proof-note">
-                ${t.position || 'Позиция'}: ${contrast.position}
-            </p>
         </div>
     `;
 }

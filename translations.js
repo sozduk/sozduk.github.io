@@ -21,6 +21,7 @@ const TRANSLATIONS = {
         same_letter: "Бир эле тамганы тандадыңыз",
         no_contrast: "Бул эки тамга үчүн минималдык жуп табылган жок",
         position: "Позиция",
+        pairs_count: "жуп",
         
         // All contrasts
         all_contrasts_title: "Бардык далилденген контрасттар",
@@ -112,6 +113,7 @@ const TRANSLATIONS = {
         same_letter: "Вы выбрали одну и ту же букву",
         no_contrast: "Для этих двух букв минимальная пара не найдена",
         position: "Позиция",
+        pairs_count: "пар",
         
         // All contrasts
         all_contrasts_title: "Все доказанные контрасты",
@@ -203,6 +205,7 @@ const TRANSLATIONS = {
         same_letter: "You selected the same letter",
         no_contrast: "No minimal pair found for these two letters",
         position: "Position",
+        pairs_count: "pairs",
         
         // All contrasts
         all_contrasts_title: "All proven contrasts",
