@@ -26,122 +26,109 @@
         </div>
     </nav>
 
-    <!-- Hero with Interactive Vowel Selector -->
-    <header class="hero">
+    <!-- Vowel Section -->
+    <section class="harmony-section">
         <div class="container">
-            <span class="hero-label" data-i18n="harmony_hero_label">Үндөштүк</span>
-            <h1 class="hero-title" data-i18n="harmony_title">Үндөш сөздөр</h1>
-            <p class="hero-subtitle" data-i18n="harmony_desc">Бир эле үнстүүдөн турган сөздөр</p>
-            
-            <!-- Vowel Selector Cards -->
-            <div class="harmony-selector">
-                <div class="vowel-group">
-                    <span class="group-label" data-i18n="harmony_back_vowels">Арткы үнстүүлөр</span>
-                    <div class="vowel-pills">
-                        <button class="vowel-pill back" data-vowel="а">
-                            <span class="pill-letter">А</span>
-                            <span class="pill-count">1941</span>
-                        </button>
-                        <button class="vowel-pill back" data-vowel="о">
-                            <span class="pill-letter">О</span>
-                            <span class="pill-count">732</span>
-                        </button>
-                        <button class="vowel-pill back" data-vowel="у">
-                            <span class="pill-letter">У</span>
-                            <span class="pill-count">617</span>
-                        </button>
-                        <button class="vowel-pill back" data-vowel="ы">
-                            <span class="pill-letter">Ы</span>
-                            <span class="pill-count">543</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="vowel-group">
-                    <span class="group-label" data-i18n="harmony_front_vowels">Алдыңкы үнстүүлөр</span>
-                    <div class="vowel-pills">
-                        <button class="vowel-pill front native" data-vowel="ө">
-                            <span class="pill-letter">Ө</span>
-                            <span class="pill-count">483</span>
-                        </button>
-                        <button class="vowel-pill front native" data-vowel="ү">
-                            <span class="pill-letter">Ү</span>
-                            <span class="pill-count">521</span>
-                        </button>
-                        <button class="vowel-pill front" data-vowel="э">
-                            <span class="pill-letter">Э</span>
-                            <span class="pill-count">26</span>
-                        </button>
-                        <button class="vowel-pill front" data-vowel="е">
-                            <span class="pill-letter">Е</span>
-                            <span class="pill-count">547</span>
-                        </button>
-                        <button class="vowel-pill front" data-vowel="и">
-                            <span class="pill-letter">И</span>
-                            <span class="pill-count">306</span>
-                        </button>
-                    </div>
-                </div>
+            <div class="harmony-header">
+                <span class="section-label" data-i18n="harmony_vowels_label">Үнстүүлөр</span>
+                <h1 class="section-title" data-i18n="harmony_title">Үндөш сөздөр</h1>
+                <p class="section-desc" data-i18n="harmony_desc">Бир эле үнстүүдөн турган сөздөр</p>
             </div>
-
-            <!-- Stats Summary -->
-            <div class="harmony-stats">
-                <div class="harmony-stat">
-                    <span class="harmony-stat-number">5717</span>
-                    <span class="harmony-stat-label" data-i18n="harmony_stat_words">Сөздөр</span>
+            
+            <!-- Vowel Selector -->
+            <div class="letter-selector">
+                <div class="selector-group">
+                    <span class="group-title" data-i18n="harmony_back_vowels">Арткы үнстүүлөр</span>
+                    <div class="letter-buttons">
+                        <button class="letter-btn vowel back" data-letter="а" data-type="vowel">А<span class="btn-count">1941</span></button>
+                        <button class="letter-btn vowel back" data-letter="о" data-type="vowel">О<span class="btn-count">732</span></button>
+                        <button class="letter-btn vowel back" data-letter="у" data-type="vowel">У<span class="btn-count">617</span></button>
+                        <button class="letter-btn vowel back" data-letter="ы" data-type="vowel">Ы<span class="btn-count">543</span></button>
+                    </div>
                 </div>
-                <div class="harmony-stat">
-                    <span class="harmony-stat-number">10</span>
-                    <span class="harmony-stat-label" data-i18n="harmony_stat_vowels">Үнстүүлөр</span>
+                <div class="selector-group">
+                    <span class="group-title" data-i18n="harmony_front_vowels">Алдыңкы үнстүүлөр</span>
+                    <div class="letter-buttons">
+                        <button class="letter-btn vowel front native" data-letter="ө" data-type="vowel">Ө<span class="btn-count">483</span></button>
+                        <button class="letter-btn vowel front native" data-letter="ү" data-type="vowel">Ү<span class="btn-count">521</span></button>
+                        <button class="letter-btn vowel front" data-letter="э" data-type="vowel">Э<span class="btn-count">26</span></button>
+                        <button class="letter-btn vowel front" data-letter="е" data-type="vowel">Е<span class="btn-count">547</span></button>
+                        <button class="letter-btn vowel front" data-letter="и" data-type="vowel">И<span class="btn-count">306</span></button>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- Results Section -->
-        <section class="section harmony-results">
-            <div class="container">
-                <!-- Selected Vowel Display -->
-                <div class="result-header" id="resultHeader" style="display: none;">
-                    <div class="result-vowel-badge" id="vowelBadge">А</div>
-                    <div class="result-info">
-                        <span class="result-count" id="resultCount">0 сөз</span>
-                        <span class="result-desc" data-i18n="harmony_showing">Бул үнстүү менен сөздөр</span>
-                    </div>
-                </div>
-                
-                <!-- Words Grid -->
-                <div class="words-container" id="wordsContainer">
-                    <div class="harmony-placeholder">
-                        <div class="placeholder-icon">◎</div>
-                        <p data-i18n="harmony_placeholder">Үнстүүнү тандаңыз</p>
+    <!-- Consonant Section -->
+    <section class="harmony-section consonant-section">
+        <div class="container">
+            <div class="harmony-header">
+                <span class="section-label" data-i18n="harmony_consonants_label">Үнсүздөр</span>
+                <h2 class="section-title" data-i18n="harmony_consonants_title">Үнсүз үндөштүк</h2>
+                <p class="section-desc" data-i18n="harmony_consonants_desc">Бир эле үнсүздөн турган сөздөр</p>
+            </div>
+            
+            <!-- Consonant Selector -->
+            <div class="letter-selector">
+                <div class="selector-group wide">
+                    <div class="letter-buttons">
+                        <button class="letter-btn consonant" data-letter="б" data-type="consonant">Б<span class="btn-count">4</span></button>
+                        <button class="letter-btn consonant" data-letter="д" data-type="consonant">Д<span class="btn-count">4</span></button>
+                        <button class="letter-btn consonant" data-letter="ж" data-type="consonant">Ж<span class="btn-count">2</span></button>
+                        <button class="letter-btn consonant" data-letter="з" data-type="consonant">З<span class="btn-count">2</span></button>
+                        <button class="letter-btn consonant" data-letter="к" data-type="consonant">К<span class="btn-count">24</span></button>
+                        <button class="letter-btn consonant" data-letter="л" data-type="consonant">Л<span class="btn-count">14</span></button>
+                        <button class="letter-btn consonant" data-letter="м" data-type="consonant">М<span class="btn-count">12</span></button>
+                        <button class="letter-btn consonant" data-letter="н" data-type="consonant">Н<span class="btn-count">6</span></button>
+                        <button class="letter-btn consonant" data-letter="п" data-type="consonant">П<span class="btn-count">6</span></button>
+                        <button class="letter-btn consonant" data-letter="с" data-type="consonant">С<span class="btn-count">4</span></button>
+                        <button class="letter-btn consonant" data-letter="т" data-type="consonant">Т<span class="btn-count">28</span></button>
+                        <button class="letter-btn consonant" data-letter="ч" data-type="consonant">Ч<span class="btn-count">12</span></button>
+                        <button class="letter-btn consonant" data-letter="ш" data-type="consonant">Ш<span class="btn-count">4</span></button>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section class="section section-dark">
-            <div class="container">
-                <div class="harmony-about">
-                    <div class="about-main">
-                        <span class="section-label" data-i18n="harmony_about_label">Маалымат</span>
-                        <h2 class="section-title" data-i18n="harmony_about_title">Үндөштүк деген эмне?</h2>
-                        <p class="about-text" data-i18n="harmony_vowel_harmony_text">Кыргыз тилинде сөздөрдүн үнстүүлөрү бири-бирине үндөшөт. Арткы үнстүүлөр (а, о, у, ы) же алдыңкы үнстүүлөр (ө, ү, э, е, и) бир сөздө колдонулат.</p>
-                    </div>
-                    <div class="about-example">
-                        <div class="example-card">
-                            <div class="example-word">алдатаала</div>
-                            <div class="example-highlight">
-                                <span class="vowel-mark">а</span>лд<span class="vowel-mark">а</span>т<span class="vowel-mark">а</span><span class="vowel-mark">а</span>л<span class="vowel-mark">а</span>
-                            </div>
-                            <p class="example-desc" data-i18n="harmony_example_desc">5 «а» үнстүүсү</p>
-                        </div>
-                    </div>
+    <!-- Results Section -->
+    <section class="section results-section">
+        <div class="container">
+            <!-- Result Header -->
+            <div class="result-header" id="resultHeader">
+                <div class="result-badge" id="resultBadge">А</div>
+                <div class="result-info">
+                    <span class="result-count" id="resultCount">1941 сөз</span>
+                    <span class="result-type" id="resultType" data-i18n="harmony_showing">Бул тамга менен сөздөр</span>
                 </div>
             </div>
-        </section>
-    </main>
+            
+            <!-- Words Grid -->
+            <div class="words-container" id="wordsContainer">
+                <!-- Words will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="about-harmony">
+                <div class="about-content">
+                    <span class="section-label" data-i18n="harmony_about_label">Маалымат</span>
+                    <h2 class="section-title" data-i18n="harmony_about_title">Үндөштүк деген эмне?</h2>
+                    <p data-i18n="harmony_vowel_harmony_text">Кыргыз тилинде сөздөрдүн үнстүүлөрү бири-бирине үндөшөт. Арткы үнстүүлөр (а, о, у, ы) же алдыңкы үнстүүлөр (ө, ү, э, е, и) бир сөздө колдонулат.</p>
+                </div>
+                <div class="about-example">
+                    <div class="example-word">
+                        <span class="hl">а</span>лд<span class="hl">а</span>т<span class="hl">а</span><span class="hl">а</span>л<span class="hl">а</span>
+                    </div>
+                    <p class="example-note" data-i18n="harmony_example_desc">5 «а» үнстүүсү</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
