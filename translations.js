@@ -83,13 +83,11 @@ const TRANSLATIONS = {
         harmony_placeholder: "Үнстүүнү тандаңыз",
         harmony_no_words: "Сөз табылган жок",
         harmony_words_label: "сөз",
-        harmony_word_count: "сөз",
+        harmony_showing: "Бул үнстүү менен сөздөр",
         harmony_about_label: "Маалымат",
         harmony_about_title: "Үндөштүк деген эмне?",
-        harmony_vowel_harmony_title: "Үнстүү үндөшүү",
         harmony_vowel_harmony_text: "Кыргыз тилинде сөздөрдүн үнстүүлөрү бири-бирине үндөшөт. Арткы үнстүүлөр (а, о, у, ы) же алдыңкы үнстүүлөр (ө, ү, э, е, и) бир сөздө колдонулат.",
-        harmony_pure_words_title: "Таза сөздөр",
-        harmony_pure_words_text: "Бул барактагы сөздөр бир эле үнстүүдөн турат. Мисалы: «алдатаала» сөзүндө бардык үнстүүлөр «а»."
+        harmony_example_desc: "5 «а» үнстүүсү"
     },
     
     ru: {
@@ -176,13 +174,11 @@ const TRANSLATIONS = {
         harmony_placeholder: "Выберите гласную",
         harmony_no_words: "Слов не найдено",
         harmony_words_label: "слов",
-        harmony_word_count: "слов",
+        harmony_showing: "Слова с этой гласной",
         harmony_about_label: "Информация",
         harmony_about_title: "Что такое гармония гласных?",
-        harmony_vowel_harmony_title: "Сингармонизм",
         harmony_vowel_harmony_text: "В кыргызском языке гласные в слове согласуются друг с другом. Задние гласные (а, о, у, ы) или передние гласные (ө, ү, э, е, и) используются в одном слове.",
-        harmony_pure_words_title: "Чистые слова",
-        harmony_pure_words_text: "Слова на этой странице содержат только одну гласную. Например: в слове «алдатаала» все гласные — «а»."
+        harmony_example_desc: "5 гласных «а»"
     },
     
     en: {
@@ -269,13 +265,11 @@ const TRANSLATIONS = {
         harmony_placeholder: "Select a vowel",
         harmony_no_words: "No words found",
         harmony_words_label: "words",
-        harmony_word_count: "words",
+        harmony_showing: "Words with this vowel",
         harmony_about_label: "Information",
         harmony_about_title: "What is Vowel Harmony?",
-        harmony_vowel_harmony_title: "Vowel Harmony",
         harmony_vowel_harmony_text: "In Kyrgyz, vowels within a word harmonize with each other. Back vowels (а, о, у, ы) or front vowels (ө, ү, э, е, и) are used together in a single word.",
-        harmony_pure_words_title: "Pure Words",
-        harmony_pure_words_text: "Words on this page contain only one vowel throughout. For example: in «алдатаала» all vowels are «а»."
+        harmony_example_desc: "5 «а» vowels"
     }
 };
 

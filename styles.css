@@ -250,9 +250,28 @@ a {
     border-color: var(--color-accent);
 }
 
+.picker-btn.available {
+    background: rgba(69, 123, 157, 0.15);
+    border-color: var(--color-accent-secondary);
+    animation: pulse-available 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-available {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(69, 123, 157, 0.4); }
+    50% { box-shadow: 0 0 0 4px rgba(69, 123, 157, 0.1); }
+}
+
+.picker-btn.unavailable {
+    opacity: 0.25;
+}
+
 .picker-btn.native {
     color: var(--color-accent);
     font-weight: 700;
+}
+
+.picker-btn.native.available {
+    color: var(--color-accent);
 }
 
 .picker-btn.disabled {
@@ -870,97 +889,207 @@ a {
     }
 }
 
-/* Vowel Harmony Page */
-.vowel-categories {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+/* Vowel Harmony Page - Modern Design */
+.harmony-selector {
+    display: flex;
+    flex-direction: column;
     gap: var(--space-xl);
-    margin-bottom: var(--space-xl);
+    margin-top: var(--space-xl);
 }
 
-.vowel-category {
+.vowel-group {
     text-align: center;
 }
 
-.category-title {
-    font-size: 0.875rem;
+.group-label {
+    display: block;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-text-light);
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.6);
     margin-bottom: var(--space-md);
 }
 
-.vowel-buttons {
+.vowel-pills {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--space-sm);
 }
 
-.vowel-btn {
-    width: 56px;
-    height: 56px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: var(--font-main);
-    background: #fff;
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
+.vowel-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: var(--space-md) var(--space-lg);
+    min-width: 70px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: all var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-main);
 }
 
-.vowel-btn:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.vowel-pill:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);
+    transform: translateY(-4px);
 }
 
-.vowel-btn.active {
+.vowel-pill.active {
+    background: #fff;
+    border-color: #fff;
+}
+
+.vowel-pill.active .pill-letter {
+    color: var(--color-bg-dark);
+}
+
+.vowel-pill.active .pill-count {
+    color: var(--color-text-light);
+}
+
+.vowel-pill.back.active {
     background: var(--color-accent);
     border-color: var(--color-accent);
+}
+
+.vowel-pill.back.active .pill-letter,
+.vowel-pill.back.active .pill-count {
     color: #fff;
 }
 
-.vowel-btn.native {
+.vowel-pill.front.active {
+    background: var(--color-accent-secondary);
     border-color: var(--color-accent-secondary);
 }
 
-.vowel-btn.native:hover {
-    border-color: var(--color-accent);
+.vowel-pill.front.active .pill-letter,
+.vowel-pill.front.active .pill-count {
+    color: #fff;
 }
 
-.vowel-info {
+.vowel-pill.native {
+    border-color: rgba(255,255,255,0.4);
+}
+
+.pill-letter {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.pill-count {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+}
+
+.harmony-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.harmony-stat {
     text-align: center;
-    margin-bottom: var(--space-xl);
 }
 
-.vowel-display {
+.harmony-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.harmony-stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+}
+
+/* Results Section */
+.harmony-results {
+    background: var(--color-bg);
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.result-vowel-badge {
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-md);
-}
-
-.selected-vowel {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--color-accent);
+    color: #fff;
+    background: var(--color-bg-dark);
+    border-radius: var(--radius-lg);
 }
 
-.vowel-count {
-    font-size: 1.25rem;
+.result-vowel-badge.back {
+    background: var(--color-accent);
+}
+
+.result-vowel-badge.front {
+    background: var(--color-accent-secondary);
+}
+
+.result-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.result-count {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.result-desc {
+    font-size: 0.875rem;
     color: var(--color-text-light);
 }
 
 .words-container {
+    min-height: 400px;
+}
+
+.harmony-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-height: 300px;
+    color: var(--color-text-light);
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-md);
+    opacity: 0.3;
 }
 
 .harmony-words-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: var(--space-md);
 }
 
@@ -968,74 +1097,135 @@ a {
     padding: var(--space-lg);
     background: #fff;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: all var(--transition);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: cardFadeIn 0.4s ease forwards;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+@keyframes cardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .harmony-word-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    border-color: transparent;
+}
+
+.word-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
 }
 
 .word-main {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: var(--space-sm);
 }
 
-.highlighted-vowel {
+.hl-vowel {
     color: var(--color-accent);
 }
 
-.word-meta {
-    font-size: 0.875rem;
+.vowel-badge {
+    font-size: 0.7rem;
     font-weight: 600;
-    color: var(--color-accent);
-    margin-bottom: var(--space-sm);
+    padding: 4px 10px;
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: var(--radius-full);
 }
 
 .word-translation {
     font-size: 0.9rem;
     color: var(--color-text-light);
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
-.info-grid {
+/* Harmony About Section */
+.harmony-about {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-lg);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
 }
 
-.info-card {
-    padding: var(--space-xl);
-    background: #fff;
-    border: 1px solid var(--color-border);
+.about-main .section-label {
+    color: var(--color-accent);
+}
+
+.about-main .section-title {
+    color: #fff;
+}
+
+.about-text {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.example-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
 }
 
-.info-card h3 {
-    font-size: 1.125rem;
+.example-word {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
     margin-bottom: var(--space-md);
 }
 
-.info-card p {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
+.example-highlight {
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: var(--space-md);
+}
+
+.vowel-mark {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.example-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.5);
 }
 
 @media (max-width: 768px) {
-    .vowel-categories {
-        grid-template-columns: 1fr;
+    .harmony-selector {
         gap: var(--space-lg);
     }
     
-    .vowel-btn {
-        width: 48px;
-        height: 48px;
+    .vowel-pill {
+        min-width: 60px;
+        padding: var(--space-sm) var(--space-md);
+    }
+    
+    .pill-letter {
         font-size: 1.25rem;
+    }
+    
+    .harmony-about {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
     }
     
     .harmony-words-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .result-header {
+        flex-direction: column;
+        text-align: center;
     }
 }

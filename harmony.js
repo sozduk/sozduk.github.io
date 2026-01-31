@@ -1,47 +1,20 @@
 // Vowel Harmony Page JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
-    initLanguage();
-    initVowelButtons();
+    applyTranslations();
+    updateLangButtons();
+    initVowelPills();
 });
 
-// Language handling
-function initLanguage() {
-    const savedLang = localStorage.getItem('phonology-lang') || 'ky';
-    setLanguage(savedLang);
-    
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            setLanguage(btn.dataset.lang);
-        });
-    });
-}
-
-function setLanguage(lang) {
-    localStorage.setItem('phonology-lang', lang);
-    document.documentElement.lang = lang;
-    
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-    
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
-            el.innerHTML = TRANSLATIONS[lang][key];
-        }
-    });
-}
-
-// Vowel buttons
-function initVowelButtons() {
-    document.querySelectorAll('.vowel-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+// Vowel pills interaction
+function initVowelPills() {
+    document.querySelectorAll('.vowel-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
             // Remove active from all
-            document.querySelectorAll('.vowel-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            document.querySelectorAll('.vowel-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
             
-            const vowel = btn.dataset.vowel;
+            const vowel = pill.dataset.vowel;
             showVowelWords(vowel);
         });
     });
@@ -50,32 +23,51 @@ function initVowelButtons() {
 function showVowelWords(vowel) {
     const words = VOWEL_HARMONY_WORDS[vowel] || [];
     const container = document.getElementById('wordsContainer');
-    const vowelDisplay = document.getElementById('selectedVowel');
-    const countDisplay = document.getElementById('wordCount');
-    const lang = localStorage.getItem('phonology-lang') || 'ky';
+    const resultHeader = document.getElementById('resultHeader');
+    const vowelBadge = document.getElementById('vowelBadge');
+    const resultCount = document.getElementById('resultCount');
+    const lang = getCurrentLang();
     
-    vowelDisplay.textContent = vowel.toUpperCase();
+    // Show result header
+    resultHeader.style.display = 'flex';
+    vowelBadge.textContent = vowel.toUpperCase();
+    vowelBadge.className = 'result-vowel-badge';
     
-    // Update count with translation
+    // Add color class based on vowel type
+    const backVowels = ['а', 'о', 'у', 'ы'];
+    if (backVowels.includes(vowel)) {
+        vowelBadge.classList.add('back');
+    } else {
+        vowelBadge.classList.add('front');
+    }
+    
+    // Update count
     const wordLabel = TRANSLATIONS[lang]?.harmony_words_label || 'сөз';
-    countDisplay.textContent = `${words.length} ${wordLabel}`;
+    resultCount.textContent = `${words.length} ${wordLabel}`;
     
     if (words.length === 0) {
-        container.innerHTML = `<p class="placeholder-text">${TRANSLATIONS[lang]?.harmony_no_words || 'Сөз табылган жок'}</p>`;
+        container.innerHTML = `
+            <div class="harmony-placeholder">
+                <div class="placeholder-icon">∅</div>
+                <p>${TRANSLATIONS[lang]?.harmony_no_words || 'Сөз табылган жок'}</p>
+            </div>
+        `;
         return;
     }
     
-    // Create words grid
+    // Create modern word cards
     let html = '<div class="harmony-words-grid">';
     
-    words.forEach(item => {
-        // Highlight the vowel in the word
+    words.forEach((item, index) => {
         const highlightedWord = highlightVowel(item.word, vowel);
+        const delay = Math.min(index * 30, 300);
         
         html += `
-            <div class="harmony-word-card">
-                <div class="word-main">${highlightedWord}</div>
-                <div class="word-meta">${item.count} ${vowel.toUpperCase()}</div>
+            <div class="harmony-word-card" style="animation-delay: ${delay}ms">
+                <div class="word-header">
+                    <span class="word-main">${highlightedWord}</span>
+                    <span class="vowel-badge">${item.count}×${vowel.toUpperCase()}</span>
+                </div>
                 <div class="word-translation">${item.translation}</div>
             </div>
         `;
@@ -86,7 +78,6 @@ function showVowelWords(vowel) {
 }
 
 function highlightVowel(word, vowel) {
-    // Highlight all instances of the vowel
     const regex = new RegExp(vowel, 'gi');
-    return word.replace(regex, `<span class="highlighted-vowel">$&</span>`);
+    return word.replace(regex, `<span class="hl-vowel">$&</span>`);
 }

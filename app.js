@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
     applyTranslations();
     updateLangButtons();
     initLetterPickers();
-    initContrastsGrid();
     initSmoothScroll();
 });
 
@@ -123,6 +122,17 @@ function initLetterPickers() {
     });
 }
 
+// Get all letters that have a contrast with the given letter
+function getAvailablePairs(letter) {
+    const pairs = new Set();
+    Object.keys(PHONOLOGY_DATA.contrasts).forEach(key => {
+        const [l1, l2] = key.split('-');
+        if (l1 === letter) pairs.add(l2);
+        if (l2 === letter) pairs.add(l1);
+    });
+    return pairs;
+}
+
 // Select a letter in picker
 function selectLetter(picker, letter) {
     if (picker === 1) {
@@ -130,6 +140,20 @@ function selectLetter(picker, letter) {
         // Update picker 1 buttons
         document.querySelectorAll('#picker1 .picker-btn').forEach(btn => {
             btn.classList.toggle('selected', btn.dataset.letter === letter);
+        });
+        
+        // Highlight available pairs in picker 2
+        const availablePairs = getAvailablePairs(letter);
+        document.querySelectorAll('#picker2 .picker-btn').forEach(btn => {
+            const btnLetter = btn.dataset.letter;
+            btn.classList.remove('available', 'unavailable');
+            if (btnLetter === letter) {
+                btn.classList.add('unavailable');
+            } else if (availablePairs.has(btnLetter)) {
+                btn.classList.add('available');
+            } else {
+                btn.classList.add('unavailable');
+            }
         });
     } else {
         selectedLetter2 = letter;
