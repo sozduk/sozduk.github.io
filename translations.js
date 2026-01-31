@@ -69,13 +69,34 @@ const TRANSLATIONS = {
         cat_folklore: "Фольклор",
         cat_dialect: "Диалект",
         cat_archaic: "Эски",
-        cat_mythology: "Мифология"
+        cat_mythology: "Мифология",
+        
+        // Harmony page
+        nav_harmony: "Үндөш сөздөр",
+        harmony_hero_label: "Үндөштүк",
+        harmony_title: "Үндөш сөздөр",
+        harmony_desc: "Бир эле үнстүүдөн турган сөздөр",
+        harmony_stat_words: "Сөздөр",
+        harmony_stat_vowels: "Үнстүүлөр",
+        harmony_back_vowels: "Арткы үнстүүлөр",
+        harmony_front_vowels: "Алдыңкы үнстүүлөр",
+        harmony_placeholder: "Үнстүүнү тандаңыз",
+        harmony_no_words: "Сөз табылган жок",
+        harmony_words_label: "сөз",
+        harmony_word_count: "сөз",
+        harmony_about_label: "Маалымат",
+        harmony_about_title: "Үндөштүк деген эмне?",
+        harmony_vowel_harmony_title: "Үнстүү үндөшүү",
+        harmony_vowel_harmony_text: "Кыргыз тилинде сөздөрдүн үнстүүлөрү бири-бирине үндөшөт. Арткы үнстүүлөр (а, о, у, ы) же алдыңкы үнстүүлөр (ө, ү, э, е, и) бир сөздө колдонулат.",
+        harmony_pure_words_title: "Таза сөздөр",
+        harmony_pure_words_text: "Бул барактагы сөздөр бир эле үнстүүдөн турат. Мисалы: «алдатаала» сөзүндө бардык үнстүүлөр «а»."
     },
     
     ru: {
         // Navigation
         nav_about: "О проекте",
         nav_pairs: "Минимальные пары",
+        nav_harmony: "Гармония гласных",
         nav_unique: "Уникальные слова",
         
         // Hero
@@ -141,13 +162,34 @@ const TRANSLATIONS = {
         cat_folklore: "Фольклор",
         cat_dialect: "Диалект",
         cat_archaic: "Устаревшие",
-        cat_mythology: "Мифология"
+        cat_mythology: "Мифология",
+        
+        // Harmony page
+        nav_harmony: "Гармония гласных",
+        harmony_hero_label: "Гармония",
+        harmony_title: "Гармония гласных",
+        harmony_desc: "Слова с одинаковой гласной во всех слогах",
+        harmony_stat_words: "Слов",
+        harmony_stat_vowels: "Гласных",
+        harmony_back_vowels: "Задние гласные",
+        harmony_front_vowels: "Передние гласные",
+        harmony_placeholder: "Выберите гласную",
+        harmony_no_words: "Слов не найдено",
+        harmony_words_label: "слов",
+        harmony_word_count: "слов",
+        harmony_about_label: "Информация",
+        harmony_about_title: "Что такое гармония гласных?",
+        harmony_vowel_harmony_title: "Сингармонизм",
+        harmony_vowel_harmony_text: "В кыргызском языке гласные в слове согласуются друг с другом. Задние гласные (а, о, у, ы) или передние гласные (ө, ү, э, е, и) используются в одном слове.",
+        harmony_pure_words_title: "Чистые слова",
+        harmony_pure_words_text: "Слова на этой странице содержат только одну гласную. Например: в слове «алдатаала» все гласные — «а»."
     },
     
     en: {
         // Navigation
         nav_about: "About",
         nav_pairs: "Minimal Pairs",
+        nav_harmony: "Vowel Harmony",
         nav_unique: "Unique Words",
         
         // Hero
@@ -213,7 +255,27 @@ const TRANSLATIONS = {
         cat_folklore: "Folklore",
         cat_dialect: "Dialect",
         cat_archaic: "Archaic",
-        cat_mythology: "Mythology"
+        cat_mythology: "Mythology",
+        
+        // Harmony page
+        nav_harmony: "Vowel Harmony",
+        harmony_hero_label: "Harmony",
+        harmony_title: "Vowel Harmony",
+        harmony_desc: "Words with the same vowel throughout all syllables",
+        harmony_stat_words: "Words",
+        harmony_stat_vowels: "Vowels",
+        harmony_back_vowels: "Back vowels",
+        harmony_front_vowels: "Front vowels",
+        harmony_placeholder: "Select a vowel",
+        harmony_no_words: "No words found",
+        harmony_words_label: "words",
+        harmony_word_count: "words",
+        harmony_about_label: "Information",
+        harmony_about_title: "What is Vowel Harmony?",
+        harmony_vowel_harmony_title: "Vowel Harmony",
+        harmony_vowel_harmony_text: "In Kyrgyz, vowels within a word harmonize with each other. Back vowels (а, о, у, ы) or front vowels (ө, ү, э, е, и) are used together in a single word.",
+        harmony_pure_words_title: "Pure Words",
+        harmony_pure_words_text: "Words on this page contain only one vowel throughout. For example: in «алдатаала» all vowels are «а»."
     }
 };
 

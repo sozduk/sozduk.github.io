@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Үндөш сөздөр - Кыргыз тили</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">СӨЗДҮК</a>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav_pairs">Минималдык жуптар</a>
+                <a href="harmony.html" class="active" data-i18n="nav_harmony">Үндөш сөздөр</a>
+                <a href="unique.html" data-i18n="nav_unique">Уникалдуу сөздөр</a>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ky" onclick="setLang('ky')">KY</button>
+                <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero hero-small">
+        <div class="container">
+            <span class="hero-label" data-i18n="harmony_hero_label">Үндөштүк</span>
+            <h1 class="hero-title" data-i18n="harmony_title">Үндөш сөздөр</h1>
+            <p class="hero-subtitle" data-i18n="harmony_desc">Бир эле үнстүүдөн турган сөздөр</p>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">5717</span>
+                        <span class="stat-label" data-i18n="harmony_stat_words">Сөздөр</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label" data-i18n="harmony_stat_vowels">Үнстүүлөр</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Vowel Selector -->
+        <section class="section">
+            <div class="container">
+                <div class="vowel-categories">
+                    <div class="vowel-category">
+                        <h3 class="category-title" data-i18n="harmony_back_vowels">Арткы үнстүүлөр</h3>
+                        <div class="vowel-buttons" id="backVowels">
+                            <button class="vowel-btn" data-vowel="а">А</button>
+                            <button class="vowel-btn" data-vowel="о">О</button>
+                            <button class="vowel-btn" data-vowel="у">У</button>
+                            <button class="vowel-btn" data-vowel="ы">Ы</button>
+                        </div>
+                    </div>
+                    <div class="vowel-category">
+                        <h3 class="category-title" data-i18n="harmony_front_vowels">Алдыңкы үнстүүлөр</h3>
+                        <div class="vowel-buttons" id="frontVowels">
+                            <button class="vowel-btn native" data-vowel="ө">Ө</button>
+                            <button class="vowel-btn native" data-vowel="ү">Ү</button>
+                            <button class="vowel-btn" data-vowel="э">Э</button>
+                            <button class="vowel-btn" data-vowel="е">Е</button>
+                            <button class="vowel-btn" data-vowel="и">И</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Selected Vowel Info -->
+                <div class="vowel-info" id="vowelInfo">
+                    <div class="vowel-display">
+                        <span class="selected-vowel" id="selectedVowel">-</span>
+                        <span class="vowel-count" id="wordCount" data-i18n="harmony_word_count">сөз</span>
+                    </div>
+                </div>
+                
+                <!-- Words List -->
+                <div class="words-container" id="wordsContainer">
+                    <p class="placeholder-text" data-i18n="harmony_placeholder">Үнстүүнү тандаңыз</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <span class="section-label" data-i18n="harmony_about_label">Маалымат</span>
+                <h2 class="section-title" data-i18n="harmony_about_title">Үндөштүк деген эмне?</h2>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3 data-i18n="harmony_vowel_harmony_title">Үнстүү үндөшүү</h3>
+                        <p data-i18n="harmony_vowel_harmony_text">Кыргыз тилинде сөздөрдүн үнстүүлөрү бири-бирине үндөшөт. Арткы үнстүүлөр (а, о, у, ы) же алдыңкы үнстүүлөр (ө, ү, э, е, и) бир сөздө колдонулат.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3 data-i18n="harmony_pure_words_title">Таза сөздөр</h3>
+                        <p data-i18n="harmony_pure_words_text">Бул барактагы сөздөр бир эле үнстүүдөн турат. Мисалы: «алдатаала» сөзүндө бардык үнстүүлөр «а».</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer_based">Юдахин сөздүгүнүн негизинде түзүлгөн</p>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="vowel_harmony_data.js"></script>
+    <script src="harmony.js"></script>
+</body>
+</html>

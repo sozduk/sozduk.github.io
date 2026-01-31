@@ -869,3 +869,173 @@ a {
         transform: translateY(0);
     }
 }
+
+/* Vowel Harmony Page */
+.vowel-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.vowel-category {
+    text-align: center;
+}
+
+.category-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-md);
+}
+
+.vowel-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.vowel-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    background: #fff;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.vowel-btn:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.vowel-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+}
+
+.vowel-btn.native {
+    border-color: var(--color-accent-secondary);
+}
+
+.vowel-btn.native:hover {
+    border-color: var(--color-accent);
+}
+
+.vowel-info {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.vowel-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
+.selected-vowel {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.vowel-count {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+}
+
+.words-container {
+    min-height: 300px;
+}
+
+.harmony-words-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-md);
+}
+
+.harmony-word-card {
+    padding: var(--space-lg);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+}
+
+.harmony-word-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.word-main {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.highlighted-vowel {
+    color: var(--color-accent);
+}
+
+.word-meta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+}
+
+.word-translation {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+}
+
+.info-card {
+    padding: var(--space-xl);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.info-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-md);
+}
+
+.info-card p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .vowel-categories {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .vowel-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+    
+    .harmony-words-grid {
+        grid-template-columns: 1fr;
+    }
+}
