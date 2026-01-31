@@ -1,5 +1,85 @@
 // Kyrgyz Phonology Interactive Application
 
+// English translations for common Kyrgyz words in minimal pairs
+const WORD_TRANSLATIONS = {
+    // Common words
+    "бар": { ru: "есть, имеется", en: "there is, exists" },
+    "пар": { ru: "пар", en: "steam" },
+    "бал": { ru: "мёд", en: "honey" },
+    "мал": { ru: "скот", en: "livestock" },
+    "тал": { ru: "ива", en: "willow" },
+    "дал": { ru: "точно", en: "exactly" },
+    "кал": { ru: "останься", en: "stay" },
+    "сал": { ru: "положи", en: "put" },
+    "ат": { ru: "лошадь; имя", en: "horse; name" },
+    "от": { ru: "огонь; трава", en: "fire; grass" },
+    "ит": { ru: "собака", en: "dog" },
+    "эт": { ru: "мясо", en: "meat" },
+    "ак": { ru: "белый", en: "white" },
+    "ок": { ru: "пуля", en: "bullet" },
+    "ук": { ru: "слушай", en: "listen" },
+    "кол": { ru: "рука", en: "hand, arm" },
+    "көл": { ru: "озеро", en: "lake" },
+    "кул": { ru: "раб", en: "slave" },
+    "күл": { ru: "пепел", en: "ash" },
+    "тор": { ru: "сеть", en: "net" },
+    "той": { ru: "праздник, пир", en: "feast, celebration" },
+    "бор": { ru: "мел", en: "chalk" },
+    "жар": { ru: "обрыв; супруг", en: "cliff; spouse" },
+    "чар": { ru: "крик", en: "cry, shout" },
+    "шар": { ru: "шар", en: "ball, sphere" },
+    "сар": { ru: "жёлтый (диал.)", en: "yellow (dial.)" },
+    "зар": { ru: "плач, стон", en: "lament, moan" },
+    "нар": { ru: "верблюд", en: "camel" },
+    "тар": { ru: "узкий", en: "narrow" },
+    "кар": { ru: "снег", en: "snow" },
+    "бак": { ru: "сад; счастье", en: "garden; happiness" },
+    "так": { ru: "точно; подкова", en: "exact; horseshoe" },
+    "сан": { ru: "число; бедро", en: "number; thigh" },
+    "тан": { ru: "рассвет", en: "dawn" },
+    "ан": { ru: "зверь", en: "animal, beast" },
+    "аң": { ru: "зверь (охотн.)", en: "game animal" },
+    "кан": { ru: "кровь; хан", en: "blood; khan" },
+    "хан": { ru: "хан", en: "khan" },
+    "жол": { ru: "дорога", en: "road, way" },
+    "тол": { ru: "наполнись", en: "fill up" },
+    "бул": { ru: "это", en: "this" },
+    "кыл": { ru: "волос; делай", en: "hair; do" },
+    "тыл": { ru: "тыл", en: "rear (military)" },
+    "тил": { ru: "язык", en: "tongue, language" },
+    "бил": { ru: "знай", en: "know" },
+    "кир": { ru: "грязь; войди", en: "dirt; enter" },
+    "кыр": { ru: "гребень; режь", en: "ridge; cut" },
+    "түн": { ru: "ночь", en: "night" },
+    "күн": { ru: "солнце; день", en: "sun; day" },
+    "көн": { ru: "привыкни", en: "get used to" },
+    "тын": { ru: "дыхание", en: "breath" },
+    "эл": { ru: "народ", en: "people, nation" },
+    "ел": { ru: "ветер", en: "wind" },
+    "ал": { ru: "он; возьми", en: "he/she; take" },
+    "ам": { ru: "теперь", en: "now" },
+    "ар": { ru: "честь; каждый", en: "honor; each" },
+    "аш": { ru: "еда; поминки", en: "food; funeral feast" },
+    "ач": { ru: "открой; голодный", en: "open; hungry" },
+    "аж": { ru: "паломничество", en: "pilgrimage" },
+    "бел": { ru: "поясница", en: "waist, back" },
+    "жал": { ru: "грива", en: "mane" },
+    "шал": { ru: "старик", en: "old man" },
+    "чал": { ru: "старик", en: "old man" },
+    "калам": { ru: "перо, ручка", en: "pen" },
+    "салам": { ru: "привет", en: "hello, greeting" },
+    "талам": { ru: "грабёж", en: "robbery" },
+    "халат": { ru: "халат", en: "robe" },
+    "калат": { ru: "останется", en: "will stay" },
+    "араак": { ru: "водка", en: "vodka, spirits" },
+    "арбак": { ru: "дух предков", en: "ancestral spirit" },
+    "факты": { ru: "факты", en: "facts" },
+    "бакты": { ru: "счастье", en: "happiness" },
+    "щит": { ru: "щит", en: "shield" },
+    "бит": { ru: "вошь; кончись", en: "louse; end" },
+    // Add more as needed...
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     applyTranslations();
     updateLangButtons();
@@ -95,6 +175,26 @@ function showContrast(letter1, letter2) {
         return;
     }
 
+    // Get translations for words
+    const word1Trans = WORD_TRANSLATIONS[contrast.word1];
+    const word2Trans = WORD_TRANSLATIONS[contrast.word2];
+    
+    // Build translation display based on language
+    let trans1Html = '';
+    let trans2Html = '';
+    
+    if (lang === 'en' && word1Trans) {
+        trans1Html = `<span class="word-meaning">${word1Trans.en}</span>`;
+    } else if (lang === 'ru' && word1Trans) {
+        trans1Html = `<span class="word-meaning">${word1Trans.ru}</span>`;
+    }
+    
+    if (lang === 'en' && word2Trans) {
+        trans2Html = `<span class="word-meaning">${word2Trans.en}</span>`;
+    } else if (lang === 'ru' && word2Trans) {
+        trans2Html = `<span class="word-meaning">${word2Trans.ru}</span>`;
+    }
+
     // Highlight the differing letters
     const word1Html = highlightDiff(contrast.word1, contrast.position - 1, false);
     const word2Html = highlightDiff(contrast.word2, contrast.position - 1, true);
@@ -107,11 +207,17 @@ function showContrast(letter1, letter2) {
                 <div class="contrast-letter second">${letter2.toUpperCase()}</div>
             </div>
             <div class="contrast-proof">
-                <span class="proof-word">${word1Html}</span>
+                <div class="proof-word-wrap">
+                    <span class="proof-word">${word1Html}</span>
+                    ${trans1Html}
+                </div>
                 <span class="proof-separator">⟷</span>
-                <span class="proof-word second">${word2Html}</span>
+                <div class="proof-word-wrap">
+                    <span class="proof-word second">${word2Html}</span>
+                    ${trans2Html}
+                </div>
             </div>
-            <p style="margin-top: var(--space-lg); color: var(--color-text-light); font-size: 0.9rem;">
+            <p class="proof-note">
                 ${t.position || 'Позиция'}: ${contrast.position}
             </p>
         </div>

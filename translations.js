@@ -3,17 +3,28 @@ const TRANSLATIONS = {
     ky: {
         // Navigation
         nav_about: "Жөнүндө",
-        nav_alphabet: "Алфавит",
         nav_pairs: "Минималдык жуптар",
         nav_unique: "Уникалдуу сөздөр",
         
         // Hero
         hero_label: "Кыргыз тили",
-        hero_title: "Фонология",
-        hero_subtitle: "Контраст принцибин колдонуу менен кыргыз тилинин ар бир графемасынын тилдик маанисин минималдык жуптар аркылуу далилдөө",
-        stat_words: "Сөздөр",
+        pairs_title: "Минималдык жуптар",
+        pairs_desc_new: "Эки тамганы тандап, алардын айырмасын далилдеген минималдык жупту көрүңүз",
+        stat_contrasts: "Контрасттар",
         stat_letters: "Тамгалар",
         stat_proven: "Далилденген",
+        
+        // Letter picker
+        select_letter1: "Биринчи тамга:",
+        select_letter2: "Экинчи тамга:",
+        pairs_placeholder_new: "Эки тамганы тандаңыз",
+        same_letter: "Бир эле тамганы тандадыңыз",
+        no_contrast: "Бул эки тамга үчүн минималдык жуп табылган жок",
+        position: "Позиция",
+        
+        // All contrasts
+        all_contrasts_title: "Бардык далилденген контрасттар",
+        all_contrasts_desc: "455 контрасттын бардыгы Юдахин сөздүгүнөн табылды",
         
         // About section
         about_label: "Контраст принциби",
@@ -25,31 +36,13 @@ const TRANSLATIONS = {
         about_proof_title: "Далилдөө",
         about_proof_text: "Эгерде минималдык жуп табылса, ал эки тыбыш тилде өз алдынча фонемалар болуп эсептелет.",
         
-        // Alphabet section
-        alphabet_label: "36 тамга",
-        alphabet_title: "Кыргыз алфавити",
-        legend_proven: "Далилденген",
-        legend_native: "Түп кыргыз тамгалары",
-        
-        // Pairs section
-        pairs_label: "Изилдөө",
-        pairs_title: "Минималдык жуптар",
-        pairs_desc_new: "Эки тамганы тандап, алардын айырмасын далилдеген минималдык жупту көрүңүз",
-        pairs_placeholder_new: "Эки тамганы тандаңыз",
-        select_letter1: "Биринчи тамга:",
-        select_letter2: "Экинчи тамга:",
-        same_letter: "Бир эле тамганы тандадыңыз",
-        no_contrast: "Бул эки тамга үчүн минималдык жуп табылган жок",
-        position: "Позиция",
-        all_contrasts_title: "Бардык далилденген контрасттар",
-        
-        // Stats section
+        // Stats
         stats_label: "Жыйынтык",
         stats_title: "Статистика",
         stats_proven_title: "Далилденген тамгалар",
         stats_proven_text: "36 тамгадан 35и минималдык жуптар аркылуу далилденди",
         stats_hard_sign_title: "Катуу белги",
-        stats_hard_sign_text: "Кыргыз тилинде катуу белги өз алдынча колдонулбайт, ошондуктан минималдык жуп табылган жок",
+        stats_hard_sign_text: "Кыргыз тилинде катуу белги өз алдынча колдонулбайт",
         
         // Footer
         footer_based: "Юдахин сөздүгүнүн негизинде түзүлгөн",
@@ -82,17 +75,28 @@ const TRANSLATIONS = {
     ru: {
         // Navigation
         nav_about: "О проекте",
-        nav_alphabet: "Алфавит",
         nav_pairs: "Минимальные пары",
         nav_unique: "Уникальные слова",
         
         // Hero
         hero_label: "Кыргызский язык",
-        hero_title: "Фонология",
-        hero_subtitle: "Доказательство фонематического статуса каждой графемы кыргызского языка с помощью минимальных пар на основе принципа контраста",
-        stat_words: "Слов",
+        pairs_title: "Минимальные пары",
+        pairs_desc_new: "Выберите две буквы, чтобы увидеть минимальную пару, доказывающую их различие",
+        stat_contrasts: "Контрастов",
         stat_letters: "Букв",
         stat_proven: "Доказано",
+        
+        // Letter picker
+        select_letter1: "Первая буква:",
+        select_letter2: "Вторая буква:",
+        pairs_placeholder_new: "Выберите две буквы",
+        same_letter: "Вы выбрали одну и ту же букву",
+        no_contrast: "Для этих двух букв минимальная пара не найдена",
+        position: "Позиция",
+        
+        // All contrasts
+        all_contrasts_title: "Все доказанные контрасты",
+        all_contrasts_desc: "Все 455 контрастов найдены в словаре Юдахина",
         
         // About section
         about_label: "Принцип контраста",
@@ -104,31 +108,13 @@ const TRANSLATIONS = {
         about_proof_title: "Доказательство",
         about_proof_text: "Если найдена минимальная пара, то эти два звука являются самостоятельными фонемами в языке.",
         
-        // Alphabet section
-        alphabet_label: "36 букв",
-        alphabet_title: "Кыргызский алфавит",
-        legend_proven: "Доказано",
-        legend_native: "Исконные кыргызские буквы",
-        
-        // Pairs section
-        pairs_label: "Исследование",
-        pairs_title: "Минимальные пары",
-        pairs_desc_new: "Выберите две буквы, чтобы увидеть минимальную пару, доказывающую их различие",
-        pairs_placeholder_new: "Выберите две буквы",
-        select_letter1: "Первая буква:",
-        select_letter2: "Вторая буква:",
-        same_letter: "Вы выбрали одну и ту же букву",
-        no_contrast: "Для этих двух букв минимальная пара не найдена",
-        position: "Позиция",
-        all_contrasts_title: "Все доказанные контрасты",
-        
-        // Stats section
+        // Stats
         stats_label: "Итоги",
         stats_title: "Статистика",
         stats_proven_title: "Доказанные буквы",
         stats_proven_text: "35 из 36 букв подтверждены минимальными парами",
         stats_hard_sign_title: "Твёрдый знак",
-        stats_hard_sign_text: "В кыргызском языке твёрдый знак не используется самостоятельно, поэтому минимальная пара не найдена",
+        stats_hard_sign_text: "В кыргызском языке твёрдый знак не используется самостоятельно",
         
         // Footer
         footer_based: "На основе словаря Юдахина",
@@ -161,17 +147,28 @@ const TRANSLATIONS = {
     en: {
         // Navigation
         nav_about: "About",
-        nav_alphabet: "Alphabet",
         nav_pairs: "Minimal Pairs",
         nav_unique: "Unique Words",
         
         // Hero
         hero_label: "Kyrgyz Language",
-        hero_title: "Phonology",
-        hero_subtitle: "Demonstrating the phonemic status of each grapheme in Kyrgyz through minimal pairs based on the principle of contrast",
-        stat_words: "Words",
+        pairs_title: "Minimal Pairs",
+        pairs_desc_new: "Select two letters to see the minimal pair proving they are distinct phonemes",
+        stat_contrasts: "Contrasts",
         stat_letters: "Letters",
         stat_proven: "Proven",
+        
+        // Letter picker
+        select_letter1: "First letter:",
+        select_letter2: "Second letter:",
+        pairs_placeholder_new: "Select two letters",
+        same_letter: "You selected the same letter",
+        no_contrast: "No minimal pair found for these two letters",
+        position: "Position",
+        
+        // All contrasts
+        all_contrasts_title: "All proven contrasts",
+        all_contrasts_desc: "All 455 contrasts found in the Yudakhin dictionary",
         
         // About section
         about_label: "Principle of Contrast",
@@ -179,35 +176,17 @@ const TRANSLATIONS = {
         about_phoneme_title: "Phoneme",
         about_phoneme_text: "A phoneme is the smallest unit of sound in a language. Replacing one phoneme with another changes the meaning of the word.",
         about_pair_title: "Minimal Pair",
-        about_pair_text: "A minimal pair consists of two words that differ by only one sound. Example: <strong>bar</strong> / <strong>par</strong>",
+        about_pair_text: "A minimal pair consists of two words that differ by only one sound. Example: <strong>bar</strong> (exists) / <strong>par</strong> (steam)",
         about_proof_title: "Proof",
         about_proof_text: "If a minimal pair is found, those two sounds are distinct phonemes in the language.",
         
-        // Alphabet section
-        alphabet_label: "36 letters",
-        alphabet_title: "Kyrgyz Alphabet",
-        legend_proven: "Proven",
-        legend_native: "Native Kyrgyz letters",
-        
-        // Pairs section
-        pairs_label: "Research",
-        pairs_title: "Minimal Pairs",
-        pairs_desc_new: "Select two letters to see the minimal pair proving they are distinct",
-        pairs_placeholder_new: "Select two letters",
-        select_letter1: "First letter:",
-        select_letter2: "Second letter:",
-        same_letter: "You selected the same letter",
-        no_contrast: "No minimal pair found for these two letters",
-        position: "Position",
-        all_contrasts_title: "All proven contrasts",
-        
-        // Stats section
+        // Stats
         stats_label: "Summary",
         stats_title: "Statistics",
         stats_proven_title: "Proven Letters",
         stats_proven_text: "35 out of 36 letters confirmed through minimal pairs",
         stats_hard_sign_title: "Hard Sign",
-        stats_hard_sign_text: "The hard sign is not used independently in Kyrgyz, so no minimal pair was found",
+        stats_hard_sign_text: "The hard sign is not used independently in Kyrgyz",
         
         // Footer
         footer_based: "Based on Yudakhin's dictionary",
