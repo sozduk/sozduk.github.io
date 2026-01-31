@@ -347,7 +347,8 @@ a {
     background: #fff;
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-border);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .pairs-placeholder {
@@ -573,7 +574,13 @@ a {
 @media (max-width: 640px) {
     .pairs-grid {
         grid-template-columns: 1fr;
-        max-height: 400px;
+        max-height: 550px;
+    }
+    
+    .contrast-display {
+        border: 2px solid var(--color-accent);
+        box-shadow: 0 6px 20px rgba(230, 57, 70, 0.15);
+        padding: var(--space-md);
     }
     
     .pair-card {
