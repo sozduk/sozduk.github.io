@@ -1,6 +1,8 @@
 // Kyrgyz Phonology Interactive Application
 
 document.addEventListener('DOMContentLoaded', function() {
+    applyTranslations();
+    updateLangButtons();
     initAlphabetGrid();
     initLetterSelector();
     initSmoothScroll();
@@ -76,12 +78,14 @@ function selectLetter(letter) {
     if (!display) return;
 
     const pairs = PHONOLOGY_DATA.letterPairs[letter];
+    const lang = getCurrentLang();
+    const t = TRANSLATIONS[lang];
     
     if (!pairs || pairs.length === 0) {
         display.innerHTML = `
             <div class="pairs-placeholder">
                 <span class="placeholder-icon">∅</span>
-                <p>Бул тамга үчүн минималдык жуп табылган жок</p>
+                <p>${t.pairs_not_found}</p>
             </div>
         `;
         return;
@@ -96,7 +100,7 @@ function selectLetter(letter) {
                 <span class="pair-word">${word1}</span>
                 <span class="pair-separator">⟷</span>
                 <span class="pair-word">${word2}</span>
-                <span class="pair-position">${pair.position}-орун</span>
+                <span class="pair-position">${pair.position}${t.pairs_position}</span>
             </div>
         `;
     }).join('');
@@ -105,7 +109,7 @@ function selectLetter(letter) {
         <div class="pairs-content">
             <div class="pairs-header">
                 <div class="pairs-letter">${letter.toUpperCase()}</div>
-                <p class="pairs-count">${pairs.length} минималдык жуп табылды</p>
+                <p class="pairs-count">${pairs.length} ${t.pairs_found}</p>
             </div>
             <div class="pairs-list">
                 ${pairsHTML}

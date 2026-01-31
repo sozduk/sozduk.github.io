@@ -12,35 +12,41 @@
 <body>
     <nav class="nav">
         <div class="nav-content">
-            <a href="#" class="logo">СӨЗДҮК</a>
+            <a href="index.html" class="logo">СӨЗДҮК</a>
             <div class="nav-links">
-                <a href="#about">Жөнүндө</a>
-                <a href="#alphabet">Алфавит</a>
-                <a href="#pairs">Минималдык жуптар</a>
+                <a href="#about" data-i18n="nav_about">Жөнүндө</a>
+                <a href="#alphabet" data-i18n="nav_alphabet">Алфавит</a>
+                <a href="#pairs" data-i18n="nav_pairs">Минималдык жуптар</a>
+                <a href="unique.html" data-i18n="nav_unique">Уникалдуу сөздөр</a>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ky" onclick="setLang('ky')">KY</button>
+                <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <span class="hero-label">Кыргыз тили</span>
-            <h1 class="hero-title">Фонология</h1>
-            <p class="hero-subtitle">
+            <span class="hero-label" data-i18n="hero_label">Кыргыз тили</span>
+            <h1 class="hero-title" data-i18n="hero_title">Фонология</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
                 Контраст принцибин колдонуу менен кыргыз тилинин ар бир графемасынын 
                 тилдик маанисин минималдык жуптар аркылуу далилдөө
             </p>
             <div class="hero-stats">
                 <div class="stat">
                     <span class="stat-number" id="total-words">23,486</span>
-                    <span class="stat-label">Сөздөр</span>
+                    <span class="stat-label" data-i18n="stat_words">Сөздөр</span>
                 </div>
                 <div class="stat">
                     <span class="stat-number">36</span>
-                    <span class="stat-label">Тамгалар</span>
+                    <span class="stat-label" data-i18n="stat_letters">Тамгалар</span>
                 </div>
                 <div class="stat">
                     <span class="stat-number" id="letters-proven">35</span>
-                    <span class="stat-label">Далилденген</span>
+                    <span class="stat-label" data-i18n="stat_proven">Далилденген</span>
                 </div>
             </div>
         </div>
@@ -49,24 +55,24 @@
     <section id="about" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Контраст принциби</span>
-                <h2 class="section-title">Минималдык жуптар деген эмне?</h2>
+                <span class="section-label" data-i18n="about_label">Контраст принциби</span>
+                <h2 class="section-title" data-i18n="about_title">Минималдык жуптар деген эмне?</h2>
             </div>
             <div class="about-grid">
                 <div class="about-card">
                     <div class="about-icon">◉</div>
-                    <h3>Фонема</h3>
-                    <p>Фонема — тилдеги эң кичинекей үн бирдиги. Бир фонеманы башкасына алмаштырганда сөздүн мааниси өзгөрөт.</p>
+                    <h3 data-i18n="about_phoneme_title">Фонема</h3>
+                    <p data-i18n="about_phoneme_text">Фонема — тилдеги эң кичинекей үн бирдиги. Бир фонеманы башкасына алмаштырганда сөздүн мааниси өзгөрөт.</p>
                 </div>
                 <div class="about-card">
                     <div class="about-icon">⟷</div>
-                    <h3>Минималдык жуп</h3>
-                    <p>Минималдык жуп — бир гана тыбыш менен айырмаланган эки сөз. Мисалы: <strong>бар</strong> / <strong>пар</strong></p>
+                    <h3 data-i18n="about_pair_title">Минималдык жуп</h3>
+                    <p data-i18n="about_pair_text">Минималдык жуп — бир гана тыбыш менен айырмаланган эки сөз. Мисалы: <strong>бар</strong> / <strong>пар</strong></p>
                 </div>
                 <div class="about-card">
                     <div class="about-icon">✓</div>
-                    <h3>Далилдөө</h3>
-                    <p>Эгерде минималдык жуп табылса, ал эки тыбыш тилде өз алдынча фонемалар болуп эсептелет.</p>
+                    <h3 data-i18n="about_proof_title">Далилдөө</h3>
+                    <p data-i18n="about_proof_text">Эгерде минималдык жуп табылса, ал эки тыбыш тилде өз алдынча фонемалар болуп эсептелет.</p>
                 </div>
             </div>
         </div>
@@ -75,8 +81,8 @@
     <section id="alphabet" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">36 тамга</span>
-                <h2 class="section-title">Кыргыз алфавити</h2>
+                <span class="section-label" data-i18n="alphabet_label">36 тамга</span>
+                <h2 class="section-title" data-i18n="alphabet_title">Кыргыз алфавити</h2>
             </div>
             <div class="alphabet-grid" id="alphabet-grid">
                 <!-- Generated by JavaScript -->
@@ -84,15 +90,15 @@
             <div class="legend">
                 <div class="legend-item">
                     <span class="legend-dot proven"></span>
-                    <span>Далилденген</span>
+                    <span data-i18n="legend_proven">Далилденген</span>
                 </div>
                 <div class="legend-item">
                     <span class="legend-dot native"></span>
-                    <span>Түп тамгалар</span>
+                    <span data-i18n="legend_native">Түп тамгалар</span>
                 </div>
                 <div class="legend-item">
                     <span class="legend-dot borrowed"></span>
-                    <span>Кириллица</span>
+                    <span data-i18n="legend_borrowed">Кириллица</span>
                 </div>
             </div>
         </div>
@@ -101,9 +107,9 @@
     <section id="pairs" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Изилдөө</span>
-                <h2 class="section-title">Минималдык жуптар</h2>
-                <p class="section-desc">Ар бир тамганы тандап, ага тиешелүү минималдык жуптарды көрүңүз</p>
+                <span class="section-label" data-i18n="pairs_label">Изилдөө</span>
+                <h2 class="section-title" data-i18n="pairs_title">Минималдык жуптар</h2>
+                <p class="section-desc" data-i18n="pairs_desc">Ар бир тамганы тандап, ага тиешелүү минималдык жуптарды көрүңүз</p>
             </div>
             
             <div class="letter-selector">
@@ -115,7 +121,7 @@
             <div class="pairs-display" id="pairs-display">
                 <div class="pairs-placeholder">
                     <span class="placeholder-icon">⬆</span>
-                    <p>Жогорудагы тамганы тандаңыз</p>
+                    <p data-i18n="pairs_placeholder">Жогорудагы тамганы тандаңыз</p>
                 </div>
             </div>
         </div>
@@ -124,8 +130,8 @@
     <section class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Жыйынтык</span>
-                <h2 class="section-title">Статистика</h2>
+                <span class="section-label" data-i18n="stats_label">Жыйынтык</span>
+                <h2 class="section-title" data-i18n="stats_title">Статистика</h2>
             </div>
             <div class="stats-grid">
                 <div class="stats-card">
@@ -138,13 +144,13 @@
                         </svg>
                         <span class="stats-percent">97%</span>
                     </div>
-                    <h3>Далилденген тамгалар</h3>
-                    <p>36 тамгадан 35и минималдык жуптар аркылуу далилденди</p>
+                    <h3 data-i18n="stats_proven_title">Далилденген тамгалар</h3>
+                    <p data-i18n="stats_proven_text">36 тамгадан 35и минималдык жуптар аркылуу далилденди</p>
                 </div>
                 <div class="stats-card">
                     <div class="stats-number">Ъ</div>
-                    <h3>Катуу белги</h3>
-                    <p>Кыргыз тилинде катуу белги өз алдынча колдонулбайт, ошондуктан минималдык жуп табылган жок</p>
+                    <h3 data-i18n="stats_hard_sign_title">Катуу белги</h3>
+                    <p data-i18n="stats_hard_sign_text">Кыргыз тилинде катуу белги өз алдынча колдонулбайт, ошондуктан минималдык жуп табылган жок</p>
                 </div>
             </div>
         </div>
@@ -155,25 +161,26 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="logo">СӨЗДҮК</span>
-                    <p>Юдахин сөздүгүнүн негизинде түзүлгөн</p>
+                    <p data-i18n="footer_based">Юдахин сөздүгүнүн негизинде түзүлгөн</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Ресурстар</h4>
+                    <h4 data-i18n="footer_resources">Ресурстар</h4>
                     <a href="https://github.com/sozduk/sozduk.github.io" target="_blank">GitHub</a>
-                    <a href="udahin_txt/kg_ru_udahin.txt" target="_blank">Сөздүк</a>
+                    <a href="udahin_txt/kg_ru_udahin.txt" target="_blank" data-i18n="footer_dictionary">Сөздүк</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Байланыш</h4>
-                    <a href="#">Жардам</a>
-                    <a href="#">Автор</a>
+                    <h4 data-i18n="footer_contact">Байланыш</h4>
+                    <a href="#" data-i18n="footer_help">Жардам</a>
+                    <a href="#" data-i18n="footer_author">Автор</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Кыргыз тилинин фонологиясы</p>
+                <p data-i18n="footer_copyright">© 2026 Кыргыз тилинин фонологиясы</p>
             </div>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
