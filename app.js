@@ -3,130 +3,147 @@
 document.addEventListener('DOMContentLoaded', function() {
     applyTranslations();
     updateLangButtons();
-    initAlphabetGrid();
-    initLetterSelector();
+    initLetterPickers();
+    initContrastsGrid();
     initSmoothScroll();
 });
 
-// Initialize the alphabet grid in the dark section
-function initAlphabetGrid() {
-    const grid = document.getElementById('alphabet-grid');
-    if (!grid) return;
+// State
+let selectedLetter1 = null;
+let selectedLetter2 = null;
+
+// Initialize letter picker grids
+function initLetterPickers() {
+    const picker1 = document.getElementById('picker1');
+    const picker2 = document.getElementById('picker2');
+    if (!picker1 || !picker2) return;
 
     PHONOLOGY_DATA.alphabet.forEach(letter => {
-        const div = document.createElement('div');
-        div.className = 'alphabet-letter';
-        div.textContent = letter.toUpperCase();
-        
-        // Add special classes
+        // Picker 1
+        const btn1 = document.createElement('button');
+        btn1.className = 'picker-btn';
+        btn1.textContent = letter.toUpperCase();
+        btn1.dataset.letter = letter;
         if (PHONOLOGY_DATA.nativeLetters.includes(letter)) {
-            div.classList.add('native');
-        } else if (!PHONOLOGY_DATA.noPairs.includes(letter)) {
-            div.classList.add('proven');
-        } else {
-            div.classList.add('no-pairs');
+            btn1.classList.add('native');
         }
-        
-        // Click to scroll to pairs section
-        div.addEventListener('click', () => {
-            const pairsSection = document.getElementById('pairs');
-            if (pairsSection) {
-                pairsSection.scrollIntoView({ behavior: 'smooth' });
-                setTimeout(() => selectLetter(letter), 500);
-            }
-        });
-        
-        grid.appendChild(div);
+        btn1.onclick = () => selectLetter(1, letter);
+        picker1.appendChild(btn1);
+
+        // Picker 2
+        const btn2 = document.createElement('button');
+        btn2.className = 'picker-btn';
+        btn2.textContent = letter.toUpperCase();
+        btn2.dataset.letter = letter;
+        if (PHONOLOGY_DATA.nativeLetters.includes(letter)) {
+            btn2.classList.add('native');
+        }
+        btn2.onclick = () => selectLetter(2, letter);
+        picker2.appendChild(btn2);
     });
 }
 
-// Initialize the letter selector tabs
-function initLetterSelector() {
-    const tabs = document.getElementById('selector-tabs');
-    if (!tabs) return;
-
-    PHONOLOGY_DATA.alphabet.forEach(letter => {
-        const button = document.createElement('button');
-        button.className = 'selector-tab';
-        button.textContent = letter.toUpperCase();
-        button.dataset.letter = letter;
-        
-        if (PHONOLOGY_DATA.noPairs.includes(letter)) {
-            button.classList.add('no-pairs');
-        }
-        
-        button.addEventListener('click', () => {
-            if (!PHONOLOGY_DATA.noPairs.includes(letter)) {
-                selectLetter(letter);
-            }
+// Select a letter in picker
+function selectLetter(picker, letter) {
+    if (picker === 1) {
+        selectedLetter1 = letter;
+        // Update picker 1 buttons
+        document.querySelectorAll('#picker1 .picker-btn').forEach(btn => {
+            btn.classList.toggle('selected', btn.dataset.letter === letter);
         });
-        
-        tabs.appendChild(button);
-    });
+    } else {
+        selectedLetter2 = letter;
+        // Update picker 2 buttons
+        document.querySelectorAll('#picker2 .picker-btn').forEach(btn => {
+            btn.classList.toggle('selected', btn.dataset.letter === letter);
+        });
+    }
+
+    // Show contrast if both selected
+    if (selectedLetter1 && selectedLetter2) {
+        showContrast(selectedLetter1, selectedLetter2);
+    }
 }
 
-// Select a letter and display its minimal pairs
-function selectLetter(letter) {
-    // Update active tab
-    const tabs = document.querySelectorAll('.selector-tab');
-    tabs.forEach(tab => {
-        tab.classList.toggle('active', tab.dataset.letter === letter);
-    });
-
-    // Display pairs
-    const display = document.getElementById('pairs-display');
+// Show contrast between two letters
+function showContrast(letter1, letter2) {
+    const display = document.getElementById('contrast-display');
     if (!display) return;
 
-    const pairs = PHONOLOGY_DATA.letterPairs[letter];
     const lang = getCurrentLang();
     const t = TRANSLATIONS[lang];
-    
-    if (!pairs || pairs.length === 0) {
+
+    // Create key (alphabetically sorted)
+    const key = [letter1, letter2].sort().join('-');
+    const contrast = PHONOLOGY_DATA.contrasts[key];
+
+    if (letter1 === letter2) {
         display.innerHTML = `
-            <div class="pairs-placeholder">
-                <span class="placeholder-icon">∅</span>
-                <p>${t.pairs_not_found}</p>
+            <div class="contrast-not-found">
+                <p>${t.same_letter || 'Бир эле тамганы тандадыңыз'}</p>
             </div>
         `;
         return;
     }
 
-    const pairsHTML = pairs.map(pair => {
-        const word1 = highlightLetter(pair.word1, pair.position - 1);
-        const word2 = highlightLetter(pair.word2, pair.position - 1);
-        
-        return `
-            <div class="pair-card">
-                <span class="pair-word">${word1}</span>
-                <span class="pair-separator">⟷</span>
-                <span class="pair-word">${word2}</span>
-                <span class="pair-position">${pair.position}${t.pairs_position}</span>
+    if (!contrast) {
+        display.innerHTML = `
+            <div class="contrast-not-found">
+                <p>${t.no_contrast || 'Бул эки тамга үчүн минималдык жуп табылган жок'}</p>
             </div>
         `;
-    }).join('');
+        return;
+    }
+
+    // Highlight the differing letters
+    const word1Html = highlightDiff(contrast.word1, contrast.position - 1, false);
+    const word2Html = highlightDiff(contrast.word2, contrast.position - 1, true);
 
     display.innerHTML = `
-        <div class="pairs-content">
-            <div class="pairs-header">
-                <div class="pairs-letter">${letter.toUpperCase()}</div>
-                <p class="pairs-count">${pairs.length} ${t.pairs_found}</p>
+        <div class="contrast-result">
+            <div class="contrast-header">
+                <div class="contrast-letter">${letter1.toUpperCase()}</div>
+                <span class="contrast-vs">≠</span>
+                <div class="contrast-letter second">${letter2.toUpperCase()}</div>
             </div>
-            <div class="pairs-list">
-                ${pairsHTML}
+            <div class="contrast-proof">
+                <span class="proof-word">${word1Html}</span>
+                <span class="proof-separator">⟷</span>
+                <span class="proof-word second">${word2Html}</span>
             </div>
+            <p style="margin-top: var(--space-lg); color: var(--color-text-light); font-size: 0.9rem;">
+                ${t.position || 'Позиция'}: ${contrast.position}
+            </p>
         </div>
     `;
 }
 
-// Highlight a specific letter in a word
-function highlightLetter(word, position) {
-    if (position < 0 || position >= word.length) return word;
-    
+// Highlight differing letter in word
+function highlightDiff(word, position, isSecond) {
     const before = word.slice(0, position);
     const letter = word[position];
     const after = word.slice(position + 1);
-    
-    return `${before}<span class="highlight">${letter}</span>${after}`;
+    return `${before}<span class="diff">${letter}</span>${after}`;
+}
+
+// Initialize all contrasts grid
+function initContrastsGrid() {
+    const grid = document.getElementById('contrasts-grid');
+    if (!grid) return;
+
+    Object.keys(PHONOLOGY_DATA.contrasts).forEach(key => {
+        const [l1, l2] = key.split('-');
+        const chip = document.createElement('div');
+        chip.className = 'contrast-chip';
+        chip.innerHTML = `<span class="letter1">${l1.toUpperCase()}</span> ≠ <span class="letter2">${l2.toUpperCase()}</span>`;
+        chip.onclick = () => {
+            selectLetter(1, l1);
+            selectLetter(2, l2);
+            // Scroll to display
+            document.getElementById('contrast-display')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+        grid.appendChild(chip);
+    });
 }
 
 // Smooth scroll for navigation links

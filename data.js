@@ -8,6 +8,72 @@ const PHONOLOGY_DATA = {
     // Letters without minimal pairs
     "noPairs": ["ъ"],
     
+    // Keyboard layout (Kyrgyz standard)
+    "keyboard": [
+        ["ё", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
+        ["й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ"],
+        ["ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э"],
+        ["я", "ч", "с", "м", "и", "т", "ь", "б", "ю", "ң", "ө", "ү"]
+    ],
+    
+    // Contrasts: which letter pairs are proven distinct
+    // Key format: "letter1-letter2" (alphabetically sorted)
+    "contrasts": {
+        "а-о": { word1: "бар", word2: "бор", position: 2 },
+        "а-у": { word1: "бал", word2: "бул", position: 2 },
+        "а-ы": { word1: "тал", word2: "тыл", position: 2 },
+        "а-э": { word1: "ат", word2: "эт", position: 1 },
+        "а-и": { word1: "бар", word2: "бир", position: 2 },
+        "а-е": { word1: "бал", word2: "бел", position: 2 },
+        "а-я": { word1: "ар", word2: "яр", position: 1 },
+        "б-п": { word1: "бар", word2: "пар", position: 1 },
+        "б-м": { word1: "бал", word2: "мал", position: 1 },
+        "б-в": { word1: "аба", word2: "ава", position: 2 },
+        "б-т": { word1: "бак", word2: "так", position: 1 },
+        "б-д": { word1: "бала", word2: "дала", position: 1 },
+        "г-к": { word1: "тага", word2: "така", position: 3 },
+        "г-б": { word1: "ага", word2: "аба", position: 2 },
+        "д-т": { word1: "дал", word2: "тал", position: 1 },
+        "е-и": { word1: "бел", word2: "бил", position: 2 },
+        "ё-о": { word1: "боёо", word2: "бозо", position: 3 },
+        "ж-ч": { word1: "жар", word2: "чар", position: 1 },
+        "ж-ш": { word1: "жал", word2: "шал", position: 1 },
+        "з-с": { word1: "зар", word2: "сар", position: 1 },
+        "и-ы": { word1: "тил", word2: "тыл", position: 2 },
+        "й-н": { word1: "сай", word2: "сан", position: 3 },
+        "й-р": { word1: "той", word2: "тор", position: 3 },
+        "к-т": { word1: "ак", word2: "ат", position: 2 },
+        "к-х": { word1: "кан", word2: "хан", position: 1 },
+        "л-р": { word1: "тал", word2: "тар", position: 3 },
+        "л-м": { word1: "ал", word2: "ам", position: 2 },
+        "м-н": { word1: "там", word2: "тан", position: 3 },
+        "н-ң": { word1: "ан", word2: "аң", position: 2 },
+        "о-у": { word1: "кол", word2: "кул", position: 2 },
+        "о-ө": { word1: "кол", word2: "көл", position: 2 },
+        "п-ф": { word1: "пар", word2: "фар", position: 1 },
+        "р-л": { word1: "бар", word2: "бал", position: 3 },
+        "с-т": { word1: "бас", word2: "бат", position: 3 },
+        "с-ш": { word1: "сар", word2: "шар", position: 1 },
+        "т-д": { word1: "ата", word2: "ада", position: 2 },
+        "у-ү": { word1: "тун", word2: "түн", position: 2 },
+        "у-ы": { word1: "кул", word2: "кыл", position: 2 },
+        "ү-ө": { word1: "күн", word2: "көн", position: 2 },
+        "ү-ы": { word1: "түн", word2: "тын", position: 2 },
+        "х-к": { word1: "халат", word2: "калат", position: 1 },
+        "ц-з": { word1: "цирк", word2: "зирк", position: 1 },
+        "ц-с": { word1: "цех", word2: "сех", position: 1 },
+        "ч-ш": { word1: "чал", word2: "шал", position: 1 },
+        "ч-ж": { word1: "ач", word2: "аж", position: 2 },
+        "ш-с": { word1: "шар", word2: "сар", position: 1 },
+        "щ-ш": { word1: "щит", word2: "шит", position: 1 },
+        "ы-и": { word1: "кыр", word2: "кир", position: 2 },
+        "ь-и": { word1: "статья", word2: "статуя", position: 5 },
+        "э-е": { word1: "эл", word2: "ел", position: 1 },
+        "ю-у": { word1: "аюу", word2: "апу", position: 2 },
+        "ю-я": { word1: "баюу", word2: "баяу", position: 3 },
+        "я-а": { word1: "аяр", word2: "аар", position: 2 }
+    },
+    
     // Minimal pairs for each letter
     "letterPairs": {
         "а": [
