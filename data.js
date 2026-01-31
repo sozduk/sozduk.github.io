@@ -457,3 +457,10 @@ const CONTRASTS = {
     "ң-ө": { word1: "күрөң", word2: "күрөө", position: 5 },
     "ү-ө": { word1: "бүгүш", word2: "бөгүш", position: 2 },
 };
+
+// Phonology data structure
+const PHONOLOGY_DATA = {
+    alphabet: ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'ң', 'о', 'ө', 'п', 'р', 'с', 'т', 'у', 'ү', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'],
+    nativeLetters: ['ң', 'ө', 'ү'],
+    contrasts: CONTRASTS
+};
